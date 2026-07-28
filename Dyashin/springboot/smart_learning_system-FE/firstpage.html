@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage Layout</title>
+    <style>
+      /* ===== Global Reset ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f9fafb;
+        color: #111827;
+      }
+
+      /* ===== Hero Section ===== */
+      .hero {
+        background-color: #7e57c2; /* purple */
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        max-width: 600px;
+        color: #e0e0e0;
+        margin-bottom: 2rem;
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        padding: 10px 24px;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: black;
+        color: white;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #333;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+      }
+
+      .btn-outline:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-images {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-images img {
+        width: 200px;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 12px;
+        transition: transform 0.6s ease;
+      }
+
+      .hero-images img:hover {
+        transform: scale(1.05);
+      }
+
+      /* ===== About Section ===== */
+      .about {
+        background-color: #e9d8fd; /* light lavender */
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      .about h3 {
+        font-size: 0.9rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+      }
+
+      .about h2 {
+        font-size: 2rem;
+        color: #111827;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .about span {
+        display: block;
+        font-size: 1rem;
+        color: #6b7280;
+      }
+
+      /* ===== Product/Vision Section ===== */
+      .content-section {
+        background-color: #ede9fe;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f5f3ff;
+        border-radius: 16px;
+        overflow: hidden;
+        padding: 40px;
+        gap: 30px;
+      }
+
+      .card img {
+        width: 45%;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        width: 50%;
+      }
+
+      .card-content h4 {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .card-content h2 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+      }
+
+      .card-content p {
+        color: #4b5563;
+        margin-bottom: 1rem;
+      }
+
+      .card-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .card-buttons button {
+        background: transparent;
+        border: 1px solid #7e57c2;
+        color: #7e57c2;
+        padding: 8px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .card-buttons button:hover {
+        background-color: #7e57c2;
+        color: white;
+      }
+
+      /* ===== Alternate layout (image right) ===== */
+      .card.reverse {
+        flex-direction: row-reverse;
+      }
+
+      /* ===== Animations ===== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero,
+      .about,
+      .card {
+        animation: fadeInUp 1s ease-in-out;
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 900px) {
+        .card {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .card img,
+        .card-content {
+          width: 100%;
+        }
+      }
+
+      /* Base container styling */
+.product-details {
+  background-color: #ede6f3;
+  padding: 80px 0;
+  font-family: "Poppins", sans-serif;
+  color: #2d2d2d;
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.image-text-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.product-image img {
+  width: 380px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-info {
+  flex: 1;
+}
+
+.feature {
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #5b5b5b;
+  line-height: 1.6;
+  max-width: 550px;
+}
+
+.feature.active h3 {
+  color: #d63384;
+}
+
+.feature.active p {
+  color: #333;
+}
+:root{
+--bg:#b89fc7; /* main purple background (approx) */
+--panel:#cdb9d9; /* slightly lighter panel */
+--card-bg: rgba(255,255,255,0.06);
+--card-border: rgba(255,255,255,0.12);
+--text: #ffffff;
+--muted: rgba(255,255,255,0.85);
+--accent: rgba(255,255,255,0.12);
+}
+
+
+*{box-sizing:border-box}
+body{font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:var(--text);}
+
+
+.wrap{
+max-width:1100px;
+margin:48px auto;
+padding:48px;
+background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+border-radius:10px;
+position:relative;
+min-height:520px;
+box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
+border: 1px solid rgba(255,255,255,0.04);
+}
+
+
+.grid{
+display:grid;
+grid-template-columns: 1fr 420px;
+gap:32px;
+height:100%;
+}
+
+
+.left{
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding-right:24px;
+}
+
+
+h1{
+font-size:56px;
+line-height:1.02;
+margin:0 0 12px 0;
+font-weight:600;
+color:var(--text);
+}
+
+
+p.lead{
+margin:0 0 20px 0;
+color:var(--muted);
+opacity:0.95;
+}
+
+
+.cta{
+display:inline-block;
+background:transparent;
+color:var(--text);
+border:1px solid var(--accent);
+padding:10px 14px;
+border-radius:8px;
+font-weight:600;
+text-decoration:none;
+width:140px;
+text-align:center;
+}
+
+ /* ===== Client Success Stories Section ===== */
+      .success-stories {
+        background-color: #b89fc7;
+        color: #fff;
+        padding: 80px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .stories-container {
+        max-width: 1100px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .stories-left h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .stories-left p {
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+      }
+
+      .stories-left button {
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .stories-left button:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .stories-right {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .story-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .story-card .stars {
+        color: gold;
+        margin-bottom: 10px;
+      }
+
+      .story-card p {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        line-height: 1.5;
+      }
+
+      .story-card .author {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .story-card .role {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 900px) {
+        .stories-container {
+          grid-template-columns: 1fr;
+        }
+        .stories-right {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Fade-in Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero,
+      .about,
+      .card {
+        animation: fadeInUp 1s ease-in-out;
+      }
+
+
+      /* ===== SOLUTIONS SECTION ===== */
+      .solutions {
+        background-color: #f3f4f6;
+        padding: 80px 40px;
+      }
+
+      .solutions-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .solutions-header h4 {
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .solutions-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .solutions-header p {
+        color: #4b5563;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .solution-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .solution-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .solution-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .solution-card .content {
+        padding: 20px;
+      }
+
+      .solution-card .tag {
+        font-size: 0.8rem;
+        color: #7e57c2;
+        background: #ede9fe;
+        padding: 4px 10px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      .solution-card h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .solution-card p {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .solution-card a {
+        font-size: 0.9rem;
+        color: #7e57c2;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .healthcare-section {
+  background-color: #f3eef6;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.healthcare-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f3eef6;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  max-width: 1100px;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.healthcare-image {
+  flex: 1;
+}
+
+.healthcare-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.healthcare-content {
+  flex: 1;
+  padding: 60px;
+  background-color: #f3eef6;
+}
+
+.healthcare-content .tag {
+  font-weight: 600;
+  color: #b48ac2;
+  margin-bottom: 10px;
+}
+
+.healthcare-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e1e1e;
+  margin-bottom: 20px;
+}
+
+.healthcare-content .description {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-primary {
+  background-color: #b48ac2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #a46db3;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #b48ac2;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-link:hover {
+  color: #8b5f9b;
+}
+
+.why-choose-us {
+  background-color: #f3eef6;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f3eef6;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  max-width: 1100px;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.choose-content {
+  flex: 1;
+  padding: 60px;
+}
+
+.choose-content .tag {
+  font-weight: 600;
+  color: #b48ac2;
+  margin-bottom: 10px;
+}
+
+.choose-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e1e1e;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.choose-content .description {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-primary {
+  background-color: #b48ac2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #a46db3;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #b48ac2;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-link:hover {
+  color: #8b5f9b;
+}
+
+.choose-image {
+  flex: 1;
+}
+
+.choose-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* ---------- INSIGHTS SECTION ---------- */
+    .insights {
+      background-color: #e6e6e6;
+      padding: 80px 10%;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .insight-card {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .insight-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .insight-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .insight-card .content {
+      padding: 20px;
+    }
+
+    .insight-card h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .insight-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .insight-card a {
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background-color: #fff;
+      padding: 60px 10%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      border-top: 1px solid #ccc;
+    }
+
+    footer h3 {
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin: 6px 0;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: #555;
+      font-size: 14px;
+    }
+
+    footer input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+    }
+
+    footer button {
+      background-color: #6b4ba8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    footer .bottom-note {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #777;
+      font-size: 13px;
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+
+
+    .lab-section {
+  background-color: #bba4cb;
+  text-align: center;
+  padding: 100px 0 180px 0;
+  color: white;
+  position: relative;
+  overflow: visible;
+}
+
+.lab-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lab-content .tag {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.lab-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.lab-content .description {
+  font-size: 16px;
+  color: #f5f5f5;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-primary {
+  background-color: white;
+  color: #b48ac2;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #f3eef6;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-link:hover {
+  color: #e0d2ee;
+}
+
+.lab-images {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.lab-img {
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.lab-img:hover {
+  transform: translateY(-10px);
+}
+
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+      <h1>heading goes here</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+        ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+      </p>
+      <div class="btn-container">
+        <button class="btn btn-primary">Button</button>
+        <button class="btn btn-outline">Button</button>
+      </div>
+      <div class="hero-images">
+        <img src="https://via.placeholder.com/200x280?text=Image+1" alt="" />
+        <img src="https://via.placeholder.com/200x280?text=Image+2" alt="" />
+        <img src="https://via.placeholder.com/200x280?text=Image+3" alt="" />
+        <img src="https://via.placeholder.com/200x280?text=Image+4" alt="" />
+      </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about">
+      <h3>About Us</h3>
+      <h2>Empowering Safer Living Through Smart Innovation</h2>
+      <span>01</span>
+    </section>
+
+    <!-- ===== PRODUCT / VISION SECTION ===== -->
+    <section class="content-section">
+      <!-- Card 1 -->
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300?text=Product+Image" alt="" />
+        <div class="card-content">
+          <h4>Empowering safer living through smarter innovation</h4>
+          <h2>"Smart Care Starts with Gerytos"</h2>
+          <p>Where innovation meets the heart of elder safety.</p>
+          <div class="card-buttons">
+            <button>Explore</button>
+            <button>Learn</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card reverse">
+        <img src="https://via.placeholder.com/400x300?text=Elder+Care" alt="" />
+        <div class="card-content">
+          <h4>Our Vision</h4>
+          <h2>
+            "Where technology brings comfort, care, and confidence to daily life."
+          </h2>
+          <p>
+            To create a safer, smarter, and more connected world for every
+            senior.
+          </p>
+          <div class="card-buttons">
+            <button>Discover</button>
+            <button>Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-details">
+  <div class="container">
+    <div class="image-text-container">
+      <div class="product-image">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/19/58/heart-1294538_960_720.png" alt="Heart Monitoring">
+      </div>
+      <div class="product-info">
+        <div class="feature active">
+          <h3>❤️ Real-Time Heart Rate Monitoring</h3>
+          <p>
+            Continuous and accurate tracking of heart rate to ensure early detection of irregularities — keeping seniors safe and informed every moment.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h3>🧠 Intelligent Fall Detection</h3>
+          <p>
+            Advanced motion sensors and AI algorithms instantly detect sudden falls and alert caregivers immediately, reducing emergency response time.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h3>🏃‍♀️ 24/7 Activity & Movement Tracking</h3>
+          <p>
+            Gerytos keeps a gentle watch on daily activities and movement levels, promoting active living while ensuring safety through smart insights.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- ===== CLIENT SUCCESS STORIES SECTION ===== -->
+    <section class="success-stories">
+      <div class="stories-container">
+        <div class="stories-left">
+          <h1>Client success stories</h1>
+          <p>From Worry to Peace — See How Gerytos Helps.</p>
+          <button>Uncover Stories →</button>
+        </div>
+
+        <div class="stories-right">
+          <div class="story-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              "Simple, accurate, and very reliable. I bought Gerytos for my
+              mother. The fall detection feature is amazing; it gives us
+              complete confidence in her safety."
+            </p>
+            <div class="author">Ravi K</div>
+            <div class="role">Bangalore</div>
+          </div>
+
+          <div class="story-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              "Technology that truly cares. What impressed me most is how
+              intelligently Gerytos tracks heart rate and sends alerts instantly."
+            </p>
+            <div class="author">Anjali Deshmukh</div>
+            <div class="role">Caregiver</div>
+          </div>
+
+          <div class="story-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              "A must-have for every family with elderly parents. Gerytos isn't
+              just a device; it's a companion."
+            </p>
+            <div class="author">Karthik R.</div>
+            <div class="role">Chennai</div>
+          </div>
+
+          <div class="story-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              "ERYTOS doesn’t just deliver technology — they deliver peace of
+              mind for families."
+            </p>
+            <div class="author">Priya Menon</div>
+            <div class="role">Daughter of a Senior User</div>
+          </div>
+        </div>
+      </div>
+    </section>
+ <!-- SOLUTIONS SECTION -->
+    <section class="solutions">
+      <div class="solutions-header">
+        <h4>Solutions</h4>
+        <h2>"A Smarter Way to Care."</h2>
+        <p>
+          Our solution combines intelligent monitoring with compassionate design —
+          protecting every heartbeat, every moment.
+        </p>
+      </div>
+
+      <div class="solutions-grid">
+        <div class="solution-card">
+          <img src="https://via.placeholder.com/400x250?text=Fall+Prevention" />
+          <div class="content">
+            <div class="tag">Fall Prevention • 5 min read</div>
+            <h3>Preventing the Fall Before It Happens</h3>
+            <p>
+              Because every step matters — Gerytos predicts and detects falls before
+              they happen.
+            </p>
+            <a href="#">Read more →</a>
+          </div>
+        </div>
+
+        <div class="solution-card">
+          <img src="https://via.placeholder.com/400x250?text=Environment+Monitoring" />
+          <div class="content">
+            <div class="tag">Environment Monitoring • 7 min read</div>
+            <h3>Where Technology Watches Over With Care</h3>
+            <p>
+              Smart monitoring that blends safety, comfort, and confidence for seniors.
+            </p>
+            <a href="#">Read more →</a>
+          </div>
+        </div>
+
+        <div class="solution-card">
+          <img src="https://via.placeholder.com/400x250?text=Heart+Health" />
+          <div class="content">
+            <div class="tag">Heart Health • 6 min read</div>
+            <h3>Where Technology Feels the Pulse of Life</h3>
+            <p>
+              Smart heart tracking that brings early insights and gentle alerts to families.
+            </p>
+            <a href="#">View all →</a>
+          </div>
+        </div>
+
+        <div class="solution-card">
+          <img src="https://via.placeholder.com/400x250?text=Sleep+Insight" />
+          <div class="content">
+            <div class="tag">Sleep Insight • 8 min read</div>
+            <h3>Where Sleep Meets Science</h3>
+            <p>
+              Deep insights into sleep patterns to understand and improve your rest.
+            </p>
+            <a href="#">View insights →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="healthcare-section">
+  <div class="healthcare-card">
+    <div class="healthcare-image">
+      <img src="healthcare.jpg" alt="Intelligent Healthcare" />
+    </div>
+    <div class="healthcare-content">
+      <p class="tag">💡 Our Mission</p>
+      <h2>"Intelligent healthcare solutions"</h2>
+      <p class="description">
+        To harness the power of innovation and empathy to develop and prevent risks,
+        empower independence, and protect what matters most — life.
+      </p>
+      <div class="buttons">
+        <button class="btn-primary">Optimize</button>
+        <button class="btn-link">Insights →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose-us">
+  <div class="choose-card">
+    <div class="choose-content">
+      <p class="tag">❤️ Why Choose Us</p>
+      <h2>"We don’t just build devices — we build confidence, safety, and peace of mind."</h2>
+      <p class="description">
+        Harnessing AI intelligence to prevent risks before they happen. Transforming elder safety
+        through smart, predictive monitoring.
+      </p>
+      <div class="buttons">
+        <button class="btn-primary">Uncover</button>
+        <button class="btn-link">Insights →</button>
+      </div>
+    </div>
+    <div class="choose-image">
+      <img src="robot-care.jpg" alt="AI robot helping elderly" />
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- INSIGHTS SECTION -->
+  <section class="insights">
+    <div class="insight-grid">
+      <div class="insight-card">
+        <img src="https://via.placeholder.com/400x200/cccccc/000000?text=Preventing+Falls" alt="">
+        <div class="content">
+          <h4>Preventing the Fall Before It Happens</h4>
+          <p>Because every step matters — Gerytos predicts, detects, and prevents falls before they happen.</p>
+          <a href="#">Read more →</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <img src="https://via.placeholder.com/400x200/aaaaff/000000?text=Technology+Cares" alt="">
+        <div class="content">
+          <h4>Where technology watches over with care</h4>
+          <p>Smart environment monitoring that blends safety, comfort, and confidence for seniors.</p>
+          <a href="#">Read more →</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <img src="https://via.placeholder.com/400x200/ffcccc/000000?text=Heart+Health" alt="">
+        <div class="content">
+          <h4>Where technology feels the pulse of life</h4>
+          <p>Smart heart tracking that brings early insights, gentle alerts, and peace of mind to families.</p>
+          <a href="#">View all →</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <img src="https://via.placeholder.com/400x200/d0baff/000000?text=Sleep+Science" alt="">
+        <div class="content">
+          <h4>Where sleep meets science</h4>
+          <p>Get deep insights into your sleep patterns to understand and personalize your rest.</p>
+          <a href="#">View insights →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lab-section">
+  <div class="lab-content">
+    <p class="tag">Lab and Technologies</p>
+    <h2>"Where Innovation Begins and Technology Protects."</h2>
+    <p class="description">
+      From our research labs to real-world solutions, we turn scientific discovery into intelligent care.
+    </p>
+    <div class="buttons">
+      <button class="btn-primary">Get started</button>
+      <button class="btn-link">Learn more →</button>
+    </div>
+  </div>
+
+  <div class="lab-images">
+    <img src="tech1.jpg" alt="Wearable technology" class="lab-img" />
+    <img src="tech2.jpg" alt="AI chip" class="lab-img" />
+    <img src="tech3.jpg" alt="Digital hologram" class="lab-img" />
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer style="margin-top: 300px;">
+    <div>
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Solutions</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#">Case studies</a></li>
+        <li><a href="#">White papers</a></li>
+        <li><a href="#">Events</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Connect</h3>
+      <ul>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Email</a></li>
+        <li><a href="#">Phone</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Subscribe</h3>
+      <p>Stay ahead with our latest technological insights and innovations.</p>
+      <input type="email" placeholder="Enter email address">
+      <button>Submit</button>
+    </div>
+
+    <div class="bottom-note">
+      © 2024 ERYTOS Technologies. Innovating with purpose. | Privacy policy | Terms of service | Cookies
+    </div>
+  </footer>
+
+
+    <script>
+      // Optional fade-in animation on load
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 1.5s ease";
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+        }, 200);
+      });
+
+      const features = document.querySelectorAll('.feature');
+features.forEach(feature => {
+  feature.addEventListener('click', () => {
+    features.forEach(f => f.classList.remove('active'));
+    feature.classList.add('active');
+  });
+});
+    </script>
+  </body>
+</html>
+
+
+
+
+
+

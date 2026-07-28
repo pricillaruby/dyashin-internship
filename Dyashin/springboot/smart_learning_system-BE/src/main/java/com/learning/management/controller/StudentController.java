@@ -1,0 +1,59 @@
+package com.learning.management.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.learning.management.dto.StudentDTO;
+import com.learning.management.entity.StudentEntity;
+import com.learning.management.service.StudentService;
+
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;;
+
+@RestController
+@RequestMapping("/student")
+@AllArgsConstructor
+@CrossOrigin(origins = "http://127.0.0.1:5501")
+public class StudentController {
+	
+	private StudentService studentService;
+	
+	public StudentController(StudentService studentService) {
+		this.studentService = studentService;
+	}
+	
+	@PostMapping("/addstudent")
+	public String addStudent(@RequestBody @Valid StudentDTO studentDTO) {
+		return studentService.addStudent(studentDTO);
+	}
+	
+	@GetMapping("/getallstudents")
+	public List<StudentEntity> getAllStudents(){
+		return studentService.getAllStudents();
+	}
+	
+	@GetMapping("/getstudent/{id}")
+	public StudentDTO getById(@PathVariable int id) {
+		return studentService.getById(id);
+	}
+	
+	@PutMapping("/updatestudent/{id}")
+	public String updateById(@PathVariable int id,@RequestBody @Valid StudentDTO studentDTO) {
+		return studentService.updateById(id, studentDTO);
+	}
+	
+	@DeleteMapping("/deletestudent/{id}")
+	public String deleteById(@PathVariable int id) {
+		return studentService.deleteById(id);
+	}
+}
+

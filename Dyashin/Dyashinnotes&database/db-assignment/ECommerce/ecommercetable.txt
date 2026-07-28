@@ -1,0 +1,29 @@
+CREATE TABLE ecommerce.Customer(
+	custID SERIAL PRIMARY KEY UNIQUE NOT NULL,
+	custName VARCHAR(100) NOT NULL,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	city VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE ecommerce.Product(
+	prodID SERIAL PRIMARY KEY UNIQUE NOT NULL,
+	prodName VARCHAR(100) NOT NULL,
+	price FLOAT NOT NULL CHECK(price>0),
+	category VARCHAR NOT NULL CHECK(category IN('Electronics','HouseHolds','Mobiles','Fashion'))
+)
+
+CREATE TABLE ecommerce.Orders(
+	orderID SERIAL PRIMARY KEY UNIQUE NOT NULL,
+	custID INT,
+	FOREIGN KEY(custID) REFERENCES ecommerce.Customer(custID),
+	orderDate DATE DEFAULT CURRENT_DATE,
+	totalAmount FLOAT NOT NULL
+)
+
+CREATE TABLE ecommerce.Orderdetails(
+	orderID INT,
+	FOREIGN KEY(orderID) REFERENCES ecommerce.Orders(orderID),
+	prodID INT,
+	FOREIGN KEY(prodID) REFERENCES ecommerce.Product(prodID),
+	quantity INT NOT NULL
+)

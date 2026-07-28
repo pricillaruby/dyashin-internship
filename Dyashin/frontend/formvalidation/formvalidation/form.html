@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="loginform" >
+        <div>
+            <input type="email" name="userEmail" id="userEmail" placeholder="enter the email">
+            <p id="emptyemail" style="display: none; color: red;">Enter the email</p>
+            <p id="invalidemail"style="display: none; color: red;">Enter the valid email</p>
+
+        </div>
+        <div style="margin-top: 10px;">
+            <input type="password" name="userPassword" id="userPassword" placeholder="enter the Password">
+            <p id="emptypassword"style="display: none; color: red;">Enter the Password</p>
+            <p id="invalidpassword"style="display: none; color: red;">Enter the valid Password</p>
+        </div>
+        <div style="margin-top: 10px;">
+            <input type="submit" value="SUMBIT" id="submitbtn">
+        </div>
+    </form>
+    <script src="./form.js"></script>
+</body>
+</html>

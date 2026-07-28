@@ -1,0 +1,79 @@
+SELECT *FROM newcompany.department  --> To view the table
+
+CREATE TABLE newcompany.department(  --> To create the table
+	dept_id SERIAL PRIMARY KEY,
+	dept_name VARCHAR UNIQUE NOT NULL
+);
+
+INSERT INTO newcompany.department(dept_name)  -->Inserting values into the table
+VALUES
+('Marketing'),('Finance'),('Human Resource'),('IT'),('Banking')
+
+SELECT *FROM newcompany.Employees
+
+CREATE TABLE newcompany.Employees(
+	employee_id SERIAL PRIMARY KEY,
+	employee_name VARCHAR NOT NULL,
+	dept_id INT,
+	FOREIGN KEY(dept_id) REFERENCES newcompany.department(dept_id)
+);
+
+DROP TABLE newcompany.Employees  --> It will drop the entire table
+
+TRUNCATE TABLE newcompany.Employees  --> It will delete only the inserted values, not the created table
+
+INSERT INTO newcompany.Employees(employee_name,dept_id)
+VALUES('Anusiya',1),
+('Bharathi',2),
+('Clara',3),
+('David',4),
+('Inicko',5),
+('John',NULL),
+('Kevin',NULL),
+('Martin',1),
+('Nayara',2),
+('Peter',NULL),
+('Tharani',3),
+('Loofy',NULL),
+('Joro',4),
+('Max',NULL),
+('Nami',5)
+
+JOINS :
+
+A join is a way to get data from two tables and show it together. You use it when one table has part of the info, and another table has the rest.
+
+🧩 Types of Joins :
+- INNER JOIN: Shows only the matching rows from both tables.
+- LEFT JOIN: Shows all rows from the first table, and matches from the second.
+- RIGHT JOIN: Shows all rows from the second table, and matches from the first.
+- FULL JOIN: Shows everything from both tables, even if there’s no match.
+- CROSS JOIN: Combines every row from one table with every row from the other.
+- SELF JOIN: Joins a table to itself (like comparing rows inside the same table).
+
+SELECT e.employee_id,e.employee_name,d.dept_name
+FROM newcompany.Employees e
+INNER JOIN newcompany.department d
+on e.dept_id = d.dept_id
+
+SELECT e.employee_id,e.employee_name,d.dept_name
+FROM newcompany.Employees e
+LEFT JOIN newcompany.department d
+on e.dept_id = d.dept_id
+
+SELECT e.employee_id,e.employee_name,d.dept_name
+FROM newcompany.Employees e
+RIGHT JOIN newcompany.department d
+on e.dept_id = d.dept_id
+
+SELECT e.employee_id,e.employee_name,d.dept_name
+FROM newcompany.Employees e
+FULL OUTER JOIN newcompany.department d
+on e.dept_id = d.dept_id
+
+SELECT e.employee_id,e.employee_name,d.dept_name
+FROM newcompany.Employees e
+CROSS JOIN newcompany.department d
+
+
+

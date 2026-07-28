@@ -1,0 +1,248 @@
+
+INSERT INTO company.Employee (emp_name, salary, hire_date, dept_id) VALUES ('John Ray', 75000, '2023-05-10', 1)
+
+INSERT INTO company.Employee (emp_name, salary, hire_date, dept_id) VALUES
+('John Abraham', 75000, '2023-05-10', 1),
+('John Mathews', 82000, '2022-08-15', 2),
+('Johnny Dsouza', 69000, '2024-01-20', 3),
+('John Paul', 88000, '2021-11-05', 4),
+('Johnson Reddy', 72000, '2023-03-12', 5);
+
+-- 1.Display all employees with their department names
+SELECT *
+FROM company.Employee e
+JOIN company.Department d
+ON e.dept_id = d.dept_id;
+
+SELECT e.emp_id,e.emp_name,e.salary,e.hire_date,d.dept_name,d.location
+FROM company.Employee e
+JOIN company.Department d
+ON e.dept_id = d.dept_id;
+
+-- Both are correct
+
+-- 2.Find Employees who earns more than 50,000
+SELECT emp_id,emp_name, salary
+FROM company.Employee
+WHERE salary > 50000;
+
+-- 3.List Employees in ascending order of salary
+SELECT * 
+FROM company.Employee
+ORDER BY salary asc;
+
+-- 4.Find the average salary in each department
+SELECT AVG(e.salary),d.dept_name
+FROM company.Employee e
+JOIN company.Department d
+ON e.dept_id = d.dept_id
+GROUP BY d.dept_name;
+
+-- 5.Count the number of employees in each department
+SELECT COUNT(e.emp_name),d.dept_name
+FROM company.Employee e
+JOIN company.Department d
+ON e.dept_id = d.dept_id
+GROUP BY d.dept_name;
+
+-- 6.Find Department having more than 2 employees
+SELECT COUNT(e.emp_name),d.dept_name
+FROM company.Employee e
+JOIN company.Department d
+ON e.dept_id = d.dept_id
+GROUP BY d.dept_name
+HAVING COUNT(e.emp_name)>2;
+
+-- 7.List Employees along with the projects they are working on
+SELECT 	e.emp_id,e.emp_name,p.project_name,p.budget
+FROM company.Employee e
+JOIN company.Project p
+ON e.dept_id=p.dept_id;
+
+-- 8.Show Employee name,department name and project name for all employees
+SELECT e.emp_id,e.emp_name,d.dept_name,p.project_name
+FROM company.Employee e
+JOIN company.Department d
+ON e.dept_id = d.dept_id
+JOIN company.Project p
+ON e.dept_id = p.dept_id;
+
+-- 9.Find Employees who earn more than average salary of all employees
+SELECT emp_id,emp_name,salary 
+FROM company.Employee
+WHERE salary >(SELECT AVG(salary) from company.Employee);
+
+SELECT * FROM COMPANY.EMPLOYEE;
+
+-- 10.Find employees who work in the same department as "John"
+SELECT * FROM COMPANY.EMPLOYEE
+WHERE EMP_NAME LIKE 'John%';
+
+-- 11. List employees working on projects with a budget greater than 1,000,000. 
+SELECT E.EMP_ID,E.EMP_NAME,D.DEPT_NAME,P.PROJECT_NAME,P.BUDGET
+FROM COMPANY.EMPLOYEE E
+JOIN COMPANY.DEPARTMENT D
+ON E.DEPT_ID = D.DEPT_ID
+JOIN COMPANY.PROJECT P
+ON P.DEPT_ID = D.DEPT_ID
+WHERE P.BUDGET > 100000
+
+--12.Find employees who are assigned to at least one project.
+-- HERE,DISTINCT removes duplicate elements
+SELECT DISTINCT E.EMP_ID,E.EMP_NAME,W.PROJECT_ID
+FROM COMPANY.EMPLOYEE E
+JOIN COMPANY.WORKSON W
+ON E.EMP_ID = W.EMP_ID
+ORDER BY E.EMP_ID ASC;
+
+-- 13.Find the department with the highest average salary. 
+SELECT AVG(e.salary),d.dept_name
+FROM Company.Employee e
+JOIN Company.Department d
+ON e.dept_id = d.dept_id
+GROUP BY d.dept_id
+ORDER BY AVG(salary) DESC
+LIMIT 1;
+
+-- 14. Find the top 3 highest-paid employees. 
+SELECT * FROM Company.Employee
+ORDER BY salary DESC
+LIMIT 3;
+
+-- 15. Find departments where the total salary exceeds 150,000.
+SELECT SUM(e.salary),d.dept_name
+FROM Company.Employee e
+JOIN Company.Department d
+ON e.dept_id = d.dept_id
+GROUP BY d.dept_id
+HAVING SUM(salary) > 150000
+
+
+INSERT INTO Company.Employee(emp_name,salary,hire_date,dept_id)
+VALUES('Jonathan',2000,'2025-02-26',3)
+
+INSERT INTO Company.Employee(emp_name,salary,hire_date,dept_id)
+VALUES('Mic',2000,'2025-02-26',null)
+
+-- 16.List employees who are not assigned to any project.
+SELECT e.emp_id ,e.emp_name,p.project_id,p.project_name
+FROM Company.Employee e
+FULL JOIN Company.Project p
+ON e.dept_id = p.dept_id
+WHERE p.project_id IS NULL
+
+INSERT INTO Company.Project(project_name,budget,dept_id)
+VALUES('Full stack',1000000,6)
+
+INSERT INTO Company.Department(dept_name,location)
+VALUES('Web Development','Banglore')
+
+DELETE FROM Company.Project
+WHERE project_id =11
+
+SELECT * FROM Company.WorksOn
+SELECT * FROM Company.Employee
+SELECT * FROM Company.Project
+SELECT * FROM Company.Department
+
+-- 17.Find projects that do not have any employees assigned. 
+SELECT p.*
+FROM Company.Project p
+LEFT JOIN Company.WorksOn w
+ON p.project_id = w.project_id
+WHERE w.project_id IS NULL
+
+-- 18. Display the total salary paid by each department. 
+SELECT SUM(e.salary),d.dept_name
+FROM Company.Employee e
+JOIN Company.Department d
+ON e.dept_id = d.dept_id
+GROUP BY d.dept_id
+
+-- 19.Find employees who work on more than one project. 
+SELECT COUNT(w.emp_id),e.emp_id,e.emp_name
+FROM Company.Employee e
+JOIN Company.WorksOn w
+ON e.emp_id = w.emp_id
+GROUP BY e.emp_id
+HAVING COUNT(w.emp_id) > 1
+
+SELECT COUNT(w.project_id),e.emp_id,e.emp_name
+FROM Company.Employee e
+JOIN Company.WorksOn w
+ON e.emp_id = w.emp_id
+GROUP BY e.emp_id
+HAVING COUNT(w.project_id) > 1
+
+SELECT COUNT(project_id),emp_id
+FROM Company.WorksOn
+GROUP BY emp_id
+
+SELECT COUNT(emp_id),project_id
+FROM Company.WorksOn
+GROUP BY project_id
+
+-- both are correct , because in first query , I have count based on the emp_id 
+-- assigned for project .In second query, I have count based on the project_id 
+-- so both are works correct
+
+-- 20.Show employees along with the total hours they worked across all projects. 
+SELECT e.emp_id,e.emp_name,w.project_id,p.project_name,w.hours_worked
+FROM Company.Employee e
+JOIN Company.Project p
+ON e.dept_id = p.dept_id
+JOIN Company.WorksOn w
+ON e.emp_id=w.emp_id
+
+-- 21. List departments where the average salary is greater than the overall average salary.
+SELECT AVG(e.salary),d.dept_id,d.dept_name
+FROM Company.Employee e
+JOIN Company.Department d
+ON e.dept_id = d.dept_id
+GROUP BY d.dept_id
+HAVING AVG(e.salary)>(SELECT AVG(salary) FROM Company.Employee)
+
+-- 22. Show employees who work in the same projects as “John”
+SELECT * FROM COMPANY.EMPLOYEE
+WHERE EMP_NAME LIKE 'John%';
+
+-- 23.Find the department with the highest total project budget. 
+SELECT SUM(p.budget),d.dept_name
+FROM Company.Project p
+JOIN Company.Department d
+ON p.dept_id = d.dept_id
+GROUP BY d.dept_id
+ORDER BY SUM(budget) DESC
+LIMIT 1
+
+-- 24.Display the department and project where maximum hours are worked. 
+
+SELECT MAX(w.hours_worked),d.dept_name,p.project_name
+FROM Company.Project p
+JOIN Company.Department d
+ON p.dept_id = d.dept_id
+JOIN Company.WorksOn w
+ON p.project_id = w.project_id
+GROUP BY d.dept_name,p.project_name
+ORDER BY MAX(w.hours_worked) DESC
+LIMIT 1
+
+INSERT INTO Company.Employee(emp_name,salary,hire_date,dept_id)
+VALUES('Jane',60000,'2025-11-25',7)
+
+-- 24.Show the employees hired in the year 2021
+SELECT emp_id ,emp_name,hire_date 
+FROM Company.Employee
+WHERE EXTRACT(YEAR FROM hire_date) = '2021'
+
+INSERT INTO Company.Department(dept_name,location)
+VALUES('AI&ML','Chicago')
+
+-- 25.List the employees who are in departments located in “Chicago”. 
+SELECT e.emp_id,e.emp_name,d.dept_name,d.location
+FROM Company.Employee e
+JOIN Company.Department d
+ON e.dept_id = d.dept_id
+WHERE d.location ='Chicago'
+
+

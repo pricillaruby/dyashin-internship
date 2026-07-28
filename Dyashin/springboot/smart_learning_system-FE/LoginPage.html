@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Learning Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center" style="margin-top: 50px;">Smart Learning Management System</h1>
+    <form name="loginform" class="row g-3" style="width: 500px; margin-left: 400px; margin-top: 50px;">
+         <div class="mb-3">
+            <label for="role" class="form-label">Choose your role to login</label>
+            <select class="form-select" id="role" name="role">
+                <option selected>Select any one</option>
+                <option value="Admin">Admin</option>
+                <option value="Student">Student</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="userEmail" id="userEmail" placeholder="Enter the Email" class="form-control">
+            <p id="emptyemail" style="display: none; color: red;">Enter the Email</p>
+            <p id="invalidemail"style="display: none; color: red;">Enter the valid Email</p>
+
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="userPassword" id="userPassword" placeholder="enter the Password" class="form-control">
+            <p id="emptypassword"style="display: none; color: red;">Enter the Password</p>
+            <p id="invalidpassword"style="display: none; color: red;">Enter the valid Password</p>
+        </div>
+        <div class="col-12">
+             <button type="submit" value="SUMBIT" id="submitbtn" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+    <script src="./LoginPage.js"></script>
+</body>
+</html>

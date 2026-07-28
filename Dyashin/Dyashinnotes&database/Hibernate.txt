@@ -1,0 +1,35 @@
+Hibernate 
+
+1. Create a folder called hibernate
+
+2. In eclipse open that folder while doing launch 
+
+3. Create maven project 
+	file -> new -> maven project -> use default -> browse -> select the hibernate folder -> filter -> type org.apache.maven -> quickstart 
+	group id -> project name , artifact id -> package name -> finish
+	To add dependency -> goto browser -> search maven repository -> there you can add whatever you want 
+	
+4. Update maven 
+	right click -> project name -> maven -> update maven
+
+5. To add resources
+	right click main -> folder -> type resources -> finish
+
+6. Create hibernate configuration file
+	right click the resources folder -> create file named hibernate.cfg.xml -> design / source -> choose source -> 
+	<?xml version="1.0" encoding="utf-8"?>
+	<hibernate-configuration>
+    		<session-factory>
+        		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/student</property> //student -> 
+        		<property name="hibernate.connection.username">postgres</property>
+        		<property name="hibernate.connection.password">Postgresql</property>
+        		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        		<property name="hibernate.hbm2ddl.auto">update</property>
+        		<property name="hibernate.show_sql">true</property>
+        		<property name="hibernate.format_sql">true</property>
+        		<mapping class="project.hybernate.hybernateprojectdemo.Student"/>
+    		</session-factory>
+	</hibernate-configuration>
+	
+	

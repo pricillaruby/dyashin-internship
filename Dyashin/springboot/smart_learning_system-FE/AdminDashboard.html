@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+  <h2>Student List</h2>
+  <table class="table table-striped table-dark" style="width: 1000px; margin-left: 150px; margin-top: 50px; text-align: center;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Course</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="studentTableBody"></tbody>
+  </table>
+
+  <!-- Edit Modal -->
+  <div id="editModal" style="display:none;">
+    <h3>Edit Student</h3>
+    <form id="editForm">
+      <input type="hidden" id="editId">
+      <input type="text" id="editName"><br>
+      <input type="email" id="editEmail"><br>
+      <input type="text" id="editPhone"><br>
+      <input type="date" id="editDob"><br>
+      <select id="editGender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select><br>
+      <select id="editCourse"></select><br>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

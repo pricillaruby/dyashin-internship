@@ -1,0 +1,72 @@
+-- 1.List all orders with customer name and order amount.
+SELECT c.custname ,p.prodname,o.totalamount  
+FROM ecommerce.customer c
+JOIN ecommerce.orders o
+ON c.custid = o.custid
+JOIN ecommerce.orderdetails od
+ON o.orderid = od.orderid
+JOIN ecommerce.product p
+ON od.orderid = p.prodid
+
+-- 2.Find customers who bought “Laptop”. 
+SELECT c.custname ,p.prodname,o.totalamount  
+FROM ecommerce.customer c
+JOIN ecommerce.orders o
+ON c.custid = o.custid
+JOIN ecommerce.orderdetails od
+ON o.orderid = od.orderid
+JOIN ecommerce.product p
+ON od.orderid = p.prodid
+WHERE p.prodname = 'Dell Inspiron Laptop'
+
+-- 3.Show top 5 highest selling products.
+SELECT MAX(od.quantity),p.prodName
+FROM ecommerce.Orderdetails od
+JOIN ecommerce.Product p
+ON od.prodID = p.prodID
+GROUP BY p.prodID,p.prodName
+ORDER BY MAX(od.quantity) DESC
+LIMIT 5;
+
+-- 4.Find total sales per category. 
+SELECT SUM(p.price * od.quantity),p.category
+FROM ecommerce.Product p
+JOIN ecommerce.Orderdetails od
+ON p.prodId = od.prodID
+GROUP BY p.category
+
+-- 5.List customers who never placed an order. 
+
+
+
+INSERT INTO ecommerce.orderdetails(orderid,prodid,quantity)
+VALUES(2,10,1);
+
+-- 6.Show customers who placed more than 3 orders. 
+SELECT COUNT(od.orderid),c.custname
+FROM ecommerce.customer c
+JOIN ecommerce.orders o
+ON c.custid = o.custid
+JOIN ecommerce.orderdetails od
+ON o.orderid = od.orderid
+GROUP BY od.orderid,c.custname
+HAVING COUNT(od.orderid) > 2
+
+-- 7.Find orders where total amount > 20,000. 
+SELECT * FROM ecommerce.orders
+WHERE totalamount > 20000
+
+-- 8.Display products that were never ordered.
+
+-- 9.Find the most expensive product ordered. 
+
+-- 10.Show the customer with the highest total purchase amount. 
+SELECT SUM(p.price * od.quantity),c.custname
+FROM ecommerce.customer c
+JOIN ecommerce.orders o
+ON c.custid = o.custid
+JOIN ecommerce.orderdetails od
+ON o.orderid = od.orderid
+JOIN ecommerce.product p
+ON od.orderid = p.prodid
+GROUP BY od.quantity,c.custname

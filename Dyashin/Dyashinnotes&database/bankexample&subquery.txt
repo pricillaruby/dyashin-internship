@@ -1,0 +1,87 @@
+CREATE TABLE bank.customer(
+	customer_id SERIAL PRIMARY KEY,
+	customer_name VARCHAR NOT NULL,
+	customer_email VARCHAR UNIQUE NOT NULL,
+	customer_phoneno VARCHAR UNIQUE NOT NULL,
+	customer_address VARCHAR NOT NULL
+)
+
+SELECT * from bank.customer
+
+INSERT INTO bank.customer(customer_name,customer_email,customer_phoneno,customer_address)
+VALUES('Pricilla Ruby','pricilla@gmail.com',7472972038,'J.P.Nagar'),
+('Jinu Mistika','jinu@gmail.com',64829427463,'Nehru Street'),
+('Priyanka','priyanka@gmail.com',9286492937,'Gandhi Nagar'),
+('Kanisha','kanisha@gmail.com',64819472945,'Jayanagar'),
+('Praveena','praveena@gmail.com',84629462864,'Xavier street'),
+('Jeya shri','jeyashri@gmail.com',99742947294,'St.Thomas street'),
+('Jeyashree','jeyashree@gmail.com',8492746282,'Koramangala'),
+('Pravin','pravin@gmail.com',9407426548,'J.P.Nagar'),
+('Vinith','vinith@gmail.com',9472946754,'Nehru Street'),
+('Balavishnu','balavishnu@gmail.com',9492748462,'Church street');
+
+CREATE TABLE bank.accounts(
+	account_id SERIAL PRIMARY KEY,
+	customer_id INT,
+	FOREIGN KEY(customer_id) REFERENCES bank.customer(customer_id),
+	balance FLOAT CHECK(balance>=0),
+	account_type VARCHAR NOT NULL CHECK(account_type IN('Savings','Fixed','Current')),
+	created_date DATE DEFAULT CURRENT_DATE 
+)
+
+SELECT * from bank.accounts
+
+INSERT INTO bank.accounts(customer_id,balance,account_type)
+VALUES(1,80000.00,'Savings'),
+(5,75000.00,'Current'),
+(3,70000.00,'Fixed'),
+(2,50000.00,'Savings'),
+(4,55000.00,'Current')
+
+CREATE TABLE bank.transactions(
+	transaction_id SERIAL PRIMARY KEY,
+	account_id INT,
+	FOREIGN KEY(account_id) REFERENCES bank.accounts(account_id),
+	amount FLOAT CHECK(amount>0),
+	transaction_type VARCHAR NOT NULL CHECK(transaction_type IN('Deposit','Withdraw','Transfer')),
+	transaction_date DATE DEFAULT CURRENT_DATE
+)
+
+
+SELECT * FROM bank.transactions
+
+INSERT INTO bank.transactions(account_id,amount,transaction_type)
+VALUES(1,5000.00,'Withdraw'),
+(2,10000.00,'Deposit'),
+(3,22000.00,'Transfer'),
+(4,2000.00,'Withdraw'),
+(5,3800.00,'Transfer')
+
+SELECT c.customer_name,a.account_type
+FROM bank.customer c
+JOIN bank.accounts a
+ON c.customer_id = a.customer_id
+
+SELECT *
+FROM bank.accounts
+WHERE balance>3000.00
+
+SELECT COUNT(account_type)
+FROM bank.accounts
+WHERE account_type = 'Current'
+
+SELECT c.customer_name,a.balance
+FROM bank.customer c
+JOIN bank.accounts a
+ON c.customer_id = a.customer_id
+
+SELECT c.customer_name,t.amount,t.transaction_type,t.transaction_date
+FROM bank.transactions t
+JOIN bank.accounts a ON t.account_id= a.account_id
+JOIN bank.customer c ON c.customer_id= c.customer_id
+
+--SUB Query
+SELECT account_id,balance
+FROM bank.accounts
+WHERE balance>(SELECT AVG(balance)
+FROM bank.accounts)

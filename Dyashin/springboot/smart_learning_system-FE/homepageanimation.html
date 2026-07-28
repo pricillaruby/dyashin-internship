@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header 142 Animation</title>
+    <style>
+      /* ======== Base Styles ======== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f9fafb;
+        color: #111827;
+        overflow: hidden;
+      }
+
+      section {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* ======== Floating Blocks ======== */
+      .floating-block {
+        position: absolute;
+        background-color: #3f3f3f;
+        border-radius: 10px;
+        animation: float 6s ease-in-out infinite;
+        opacity: 0.4;
+      }
+
+      .block1 {
+        width: 120px;
+        height: 120px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .block2 {
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        right: 15%;
+        animation-delay: 2s;
+      }
+
+      .block3 {
+        width: 140px;
+        height: 140px;
+        bottom: 15%;
+        left: 20%;
+        animation-delay: 1s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* ======== Hero Text ======== */
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 600px;
+        padding: 20px;
+        animation: fadeInUp 1.2s ease-in-out;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .hero-content p {
+        color: #6b7280;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      /* ======== Buttons ======== */
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 10px 24px;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: #111827;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: #1f2937;
+      }
+
+      .btn-outline {
+        background-color: white;
+        border: 1px solid #d1d5db;
+      }
+
+      .btn-outline:hover {
+        background-color: #f3f4f6;
+      }
+
+      /* ======== Fade In Animation ======== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <!-- Floating background blocks -->
+      <div class="floating-block block1"></div>
+      <div class="floating-block block2"></div>
+      <div class="floating-block block3"></div>
+
+      <!-- Hero content -->
+      <div class="hero-content">
+        <h1>Medium length hero heading goes here</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          varius enim in eros elementum tristique.
+        </p>
+        <div class="btn-container">
+          <button class="btn btn-primary">Button</button>
+          <button class="btn btn-outline">Button</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Optional JS for a subtle fade-in effect on load
+      document.addEventListener("DOMContentLoaded", () => {
+        const section = document.querySelector("section");
+        section.style.opacity = "0";
+        section.style.transition = "opacity 1.2s ease-in-out";
+        setTimeout(() => {
+          section.style.opacity = "1";
+        }, 200);
+      });
+    </script>
+  </body>
+</html>

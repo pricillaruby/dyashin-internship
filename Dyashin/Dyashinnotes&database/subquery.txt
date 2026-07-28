@@ -1,0 +1,100 @@
+SELECT *FROM bank.customer
+
+CREATE TABLE bank.customer(
+	cus_id SERIAL PRIMARY KEY,
+	cus_name VARCHAR NOT NULL,
+	cus_email VARCHAR UNIQUE NOT NULL,
+	cus_phno VARCHAR UNIQUE NOT NULL,
+	address VARCHAR NOT NULL
+);
+
+INSERT INTO bank.customer(cus_name,cus_email,cus_phno,address)
+VALUES('Martin','martin2006@gmail.com',9876543210,'Dindigul'),
+('Peter','johnpeter200765@gmail.com',9876543211,'Chennai'),
+('Harry','harrypotter@gmail.com',9876543212,'Madurai'),
+('Lavanya','lavanya20@gmail.com',9876543213,'Theni'),
+('Kanisha','kanisha25@gmail.com',9876543214,'Salem'),
+('Pricilla','pricillaruby33@gmail.com',9876543215,'Dindigul'),
+('Praveena','praveena1406@gmail.com',9876543216,'Chennai'),
+('Priyanga','priyanga34@gmail.com',9876543217,'Madurai'),
+('Juli','juli2306@gmail.com',9876543218,'Theni'),
+('Sipriya','sipriya42006@gmail.com',9876543219,'Salem')
+
+SELECT *FROM bank.account
+
+CREATE TABLE bank.account (
+    acc_id SERIAL PRIMARY KEY,
+    cus_id INT,
+    balance NUMERIC CHECK (balance >= 0),
+    acc_type TEXT CHECK (acc_type IN ('savings', 'fixed', 'current')) NOT NULL,
+    created_date DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (cus_id) REFERENCES bank.customer(cus_id)
+);
+
+INSERT INTO bank.account(cus_id,balance,acc_type)
+VALUES
+(1, 15000.00, 'savings'),
+(2, 50000.00, 'fixed'),
+(3, 1200.50, 'current'),
+(4, 75000.00, 'savings'),
+(5, 30000.00, 'fixed');
+
+SELECT *FROM bank.transactions
+
+CREATE TABLE bank.transactions(
+	trans_id SERIAL PRIMARY KEY,
+	acc_id INT,
+	credited_amount FLOAT CHECK(credited_amount>=0),
+	trans_date DATE DEFAULT CURRENT_DATE,
+	trans_type TEXT CHECK (trans_type IN ('deposit', 'withdrawal', 'transfer')) NOT NULL,
+	FOREIGN KEY (acc_id) REFERENCES bank.account(acc_id)
+);
+
+INSERT INTO bank.transactions (acc_id, credited_amount, trans_type)
+VALUES
+(1, 35000.00, 'deposit'),
+(2, 26000.00, 'withdrawal'),
+(3, 1500.00, 'transfer'),
+(4, 10000.00, 'deposit'),
+(5, 5500.00, 'withdrawal');
+
+
+1. List the names and account types of all customers
+
+SELECT c.cus_name, a.acc_type
+FROM bank.customer c
+JOIN bank.account a
+ON c.cus_id = a.cus_id
+
+2.Find the accounts where balance > 50000
+
+SELECT *FROM bank.account
+WHERE balance>=50000
+
+3.Count how many customers have current account
+
+SELECT COUNT(*) 
+FROM bank.account
+Where acc_type='current'
+
+4.List all the customers with their account balance
+
+SELECT c.cus_name, a.balance
+FROM bank.customer c
+JOIN bank.account a
+ON c.cus_id = a.cus_id
+
+SELECT c.cus_name, t.amount,
+FROM bank.customer c
+JOIN bank.account a
+ON c.cus_id = a.cus_id
+
+SELECT c.cus_name, t.trans_type,t.credited_amount,t.trans_date
+FROM bank.transactions t
+JOIN bank.account a ON t.acc_id = a.acc_id
+JOIN bank.customer c ON c.cus_id = a.cus_id
+
+SELECT acc_id,balance
+FROM bank.account
+WHERE balance > (SELECT AVG (balance)
+FROM bank.account)

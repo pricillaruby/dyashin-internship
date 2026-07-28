@@ -1,0 +1,33 @@
+Creating JSP -JAVA SERVER PAGES
+
+1.main->new folder : webapp -> create another new folder in webapp : WEB-INF -> create another new folder on WEB-INF : jsp->create file in jsp folder : home.jsp
+main
+  >webapp
+   >WEB-INF
+    >jsp
+      >home.jsp
+
+2.Add Dependencies in pom.xml
+<dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+    </dependency>
+ 
+    <!-- JSTL for JSP -->
+    <dependency>
+        <groupId>jakarta.servlet.jsp.jstl</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+pom.xml->right click->Maven ->update project
+
+
+3.In resources folder -> application.properties ->add below
+spring.mvc.view.prefix=/WEB-INF/jsp/
+spring.mvc.view.suffix=.jsp
+
+4.In home.jsp
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+below this line write html code
+
+5.Add code

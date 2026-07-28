@@ -1,0 +1,81 @@
+1.What is Encapsulation in Java > Explain with Example
+	*Encapsulation is defined as Wrapping up the implementations of data members 
+and methods in a single unit.
+	*It hides the implementations part and shows functionality.
+	*It solve implementations level issues.
+	*Declaring class variables in private and access it using public getters 
+and setters method.
+	
+Example:
+	public class Encapsulation{
+		private String name;
+		private int age;
+		
+		public Encapsulation(String name , int age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		public String getName(){
+			return name;
+		}
+		
+		public void setName(String name){
+			this.name = name;
+		}
+		
+		public int getAge(){
+			return age;
+		}
+		
+		public void setAge(int age){
+			this.age = age;
+		}
+	}
+
+
+2.Why Encapsulation is knows as Data Hiding? How does Java achieve it?
+	*Data Hiding means the internal Data (fields/variables) of a class are not 
+accessed from outside the class.
+	*It can hide using private and accessed using public getters and setters.
+	*So that's why Encapsulation is known as Data Hiding.
+	*Encapsulation ensures only authorized methods can access or modify the data.
+	
+	Java achieve through access modifiers such as public ,private and protected.
+	
+3.What are the benefits of using encapsulation in oops?
+	1.Data Protection(Security)
+	2.Controlled Access
+	3.Easy to debug and update without affects other parts (maintainability)
+	4.Reusability.
+	
+4. How is Encapsulation differ from abstraction?
+	Encapsulation:
+		1.Hides internal data and implementation details
+		2.Data protection and access control
+		3.Using private fields and public methods
+		4.Restricts access to internal state
+		5.Private variables with getters/setters
+		
+	Abstraction:
+		1.Hides complexity by showing only essential features
+		2.Simplification and design clarity
+		3.Using abstract classes, interfaces, or method hiding
+		4.Exposes only relevant behavior to the user
+		5.Interface with method signatures, no implementation
+		
+5. Can you achieve encapsulation without using private variables? Explain.
+		Encapsulation is about restricting direct access to data and exposing it 
+	through controlled interfaces. While private is the most common and secure way to
+	do this, Java also allows other access modifiers like protected and 
+	default (package-private).
+		protected → accessible within the same package and subclasses
+		default (no modifier) → accessible only within the same package
+	These still provide some level of encapsulation.
+	    Without private, any class in the same package can access and modify 
+	the data directly.
+	    This breaks the principle of data hiding, which is the core of encapsulation.
+	    You lose control and security, especially in large applications or APIs.
+
+
+	 

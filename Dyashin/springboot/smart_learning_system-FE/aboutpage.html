@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Erytos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0b0d0c 0%, #1b1d1b 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Header text */
+    .about-header {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .about-header h3 {
+      font-size: 0.9rem;
+      color: #ccc;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .about-header h1 {
+      font-size: 2rem;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    .about-header p {
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    /* Slider container */
+    .slider-container {
+      width: 80%;
+      max-width: 1000px;
+      height: 400px;
+      margin: 60px auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #111;
+      padding: 30px;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: all 1s ease-in-out;
+      border-radius: 16px;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide img {
+      width: 45%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .slide-content {
+      width: 45%;
+      padding: 20px;
+    }
+
+    .slide-content h5 {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-bottom: 10px;
+    }
+
+    .slide-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .slide-content p {
+      font-size: 1rem;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .btns {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    @keyframes slideUp {
+      0% { transform: translateY(100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Animation for auto sliding */
+    @keyframes autoSlide {
+      0%, 20% { transform: translateY(0); opacity: 1; }
+      25%, 95% { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="about-header">
+    <h3>About Us</h3>
+    <h1>Empowering Safer Living Through<br>Smart Innovation</h1>
+    <p>01</p>
+  </div>
+
+  <div class="slider-container">
+    <div class="slide active">
+      <img src="https://i.ibb.co/QJ2Fj7y/erytos-product.jpg" alt="Erytos Product">
+      <div class="slide-content">
+        <h5>Empowering safer living through smarter innovation</h5>
+        <h2>"Smart Care Starts with Gerytos"</h2>
+        <p>Where innovation meets the heart of elder safety.</p>
+        <div class="btns">
+          <button class="btn">Explore</button>
+          <button class="btn">Learn →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

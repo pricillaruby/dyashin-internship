@@ -1,0 +1,19 @@
+INDEX VERSION 1.134+C:\Users\prici\Dyashin\springboot\smart_learning_system-BE\.metadata\.plugins\org.eclipse.jdt.core
+3182588802.index
+491100456.index
+1865797976.index
+1098245574.index
+4230888024.index
+649998908.index
+1638815145.index
+993732417.index
+4093135487.index
+2707442467.index
+1677127928.index
+2696064788.index
+170575599.index
+1790418631.index
+970567841.index
+2203014954.index
+2319091952.index
+1015953823.index

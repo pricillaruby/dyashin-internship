@@ -1,0 +1,29 @@
+1. What is polymorphism in Java? Explain with a real-life example. 
+    Polymorphism means “many forms.” In Java, it allows objects to be treated 
+as instances of their parent class rather than their actual class. 
+It enables one interface to be used for different underlying forms (data types).
+	Polymorphism allows methods to do different things based on the object that 
+invokes them —even if they share the same name.
+	Imagine a smartphone charger. You plug it into different phones—Samsung,
+iPhone, Pixel—but it adapts and charges each one correctly. The charger is 
+the common interface, and each phone is a different implementation.
+	
+
+2. Differentiate between compile-time and run-time polymorphism with examples.
+
+compile time:
+	Method Overloading
+	Compile Time
+	Same method name, different parameters
+	add(int a,int b) , add(double a,double b)
+	Utility methods, calculations
+	
+run time:
+	Method Overriding
+	Runtime
+	Same method name, same parameters
+	sound() overridden in Dog, Cat classes
+	Dynamic behavior based on object type
+	
+
+	

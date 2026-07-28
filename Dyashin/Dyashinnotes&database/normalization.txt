@@ -1,0 +1,93 @@
+🧠 What Is Normalization?
+Normalization is the process of organizing data in a relational database to reduce duplication and ensure logical data storage. It’s like designing a hospital where each department knows exactly what it’s responsible for—no confusion, no overlap.
+
+🎯 Why We Normalize
+- To avoid storing the same information in multiple places
+- To make updates easier and safer
+- To ensure each piece of data lives in the right place
+- To improve query performance and data integrity
+ 
+
+📚 Types of Normal Forms (NF)
+Here’s how normalization progresses:
+- 1NF: Ensures each record is unique and all values are atomic (no lists or groups)
+- 2NF: Ensures every non-identifier detail depends fully on the identifier
+- 3NF: Ensures no indirect dependencies between details
+- BCNF and beyond: Handle more advanced relationships and constraints
+
+
+
+SELECT *FROM hospital.patient;
+
+CREATE TABLE hospital.patient(
+	pati_id SERIAL PRIMARY KEY,
+	pati_name VARCHAR NOT NULL,
+	pati_age INT CHECK (pati_age>0) NOT NULL,
+	disease VARCHAR NOT NULL,
+	doc_id INT NOT NULL,
+	medi_id INT NOT NULL,
+	room_no INT NOT NULL UNIQUE,
+	FOREIGN KEY (doc_id) REFERENCES hospital.doctor(doc_id),
+	FOREIGN KEY (medi_id) REFERENCES hospital.medicine(medi_id),
+	FOREIGN KEY (room_no) REFERENCES hospital.room(room_no)
+);
+
+DROP TABLE hospital.patient
+
+INSERT INTO hospital.patient(pati_name,pati_age,disease,doc_id,medi_id,room_no)
+VALUES
+('Amaya', 45, 'Diabetes', 101, 201, 301),
+('Reena', 32, 'Asthma', 102, 202, 302),
+('Rohit', 60, 'Hypertension', 103, 203, 303),
+('Arjun', 27, 'Migraine', 104, 204, 304),
+('Dhiya', 50, 'Arthritis', 105, 205, 305);
+
+SELECT *FROM hospital.doctor
+
+CREATE TABLE hospital.doctor(
+	doc_id INT PRIMARY KEY,
+	doc_name VARCHAR NOT NULL,
+	doc_phno VARCHAR UNIQUE NOT NULL,
+);
+
+INSERT INTO hospital.doctor(doc_id,doc_name,doc_phno)
+VALUES
+(101, 'Dr. Meera', '9876543210'),
+(102, 'Dr. Amaran', '9123456780'),
+(103, 'Dr. Kavitha', '9988776655'),
+(104, 'Dr. Kaviyaa', '9090909090'),
+(105, 'Dr. Snehan', '9001234567');
+
+SELECT *FROM hospital.medicine
+
+CREATE TABLE hospital.medicine(
+	medi_id INT PRIMARY KEY,
+	medicine VARCHAR NOT NULL
+);
+
+INSERT INTO hospital.medicine (medi_id, medicine)
+VALUES
+(201, 'Metformin'),
+(202, 'Salbutamol'),
+(203, 'Amlodipine'),
+(204, 'Sumatriptan'),
+(205, 'Ibuprofen');
+
+SELECT *FROM hospital.room
+
+CREATE TABLE hospital.room (
+	room_no INT PRIMARY KEY, 
+	room_type VARCHAR,
+	room_charges FLOAT NOT NULL 
+);
+
+INSERT INTO hospital.room (room_no, room_type, room_charges) 
+VALUES
+(101, 'General Ward', 1500.00),
+(102, 'Semi-Private', 2500.00),
+(103, 'Private', 4000.00),
+(104, 'ICU', 7000.00),
+(105, 'Deluxe Suite', 10000.00);
+
+
+

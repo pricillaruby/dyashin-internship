@@ -1,0 +1,7 @@
+In Java, when a subclass overrides a method from its superclass,
+ it can return a more specific type (a subtype) than the one 
+ declared in the superclass method. This is called a covariant return type
+
+- It allows more precise return types while still respecting polymorphism.
+- Improves type safety and reduces the need for casting.
+- Makes overridden methods more context-aware in subclasses.

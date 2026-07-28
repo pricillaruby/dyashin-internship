@@ -1,0 +1,14 @@
+Java Application Connection without springboot with the help of servlet
+
+1.Download Tomcat Server -> Select version 9 -> Select 64 bit windows -> Extract that file in Program files , create tomcat folder and extract
+
+2.Open environment variable ->  edit -> system variable -> new -> Variable name -> CATALINA_HOME -> Variable value -> tomcat server path  
+Next user variable -> path -> new -> %CATALINA_HOME%\bin
+>
+3.Download eclipse ide enterprise for java and web developer -> Open -> file -> new -> other -> web -> dynamic web project -> Project name -> new runtime -> Apache -> version -> 9 -> browse -> tomcat server path -> 4.0 -> finish
+
+Click created project -> source -> src -> main ->java -> right click java -> other -> web -> servlet -> package name & class name -> finish -> code automatically come 
+
+run -> right click the project folder -> run as -> run on server -> Apache -> tomcat 9 -> finish 
+
+It will open the brower there you have to give your class name (or) http://localhost:8080/Project_name/class_name

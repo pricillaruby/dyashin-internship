@@ -1,0 +1,9 @@
+INDEX VERSION 1.134+C:\Users\prici\Dyashin\java_core\.metadata\.plugins\org.eclipse.jdt.core
+4171737291.index
+322474641.index
+3413270776.index
+1865797976.index
+2409666653.index
+805907981.index
+3948167161.index
+1746449754.index

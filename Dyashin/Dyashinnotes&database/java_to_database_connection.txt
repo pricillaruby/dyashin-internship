@@ -1,0 +1,10 @@
+Connecting java application to PostgreSQL database
+
+1. PostgreSQL driver
+
+Have to add that PostgreSQL driver jar file into that application
+	1.create new java project
+	2.right click there you see build path -> click configure build path
+	3.Goto libraries -> select modulepath -> add external jar -> Select postdresql jar file from downloads -> Click apply -> Again click apply and close.
+	4.Now you can see the referenced libraries (if you did correctly then only you can see this)
+
